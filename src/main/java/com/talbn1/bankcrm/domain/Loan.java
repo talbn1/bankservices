@@ -2,9 +2,8 @@ package com.talbn1.bankcrm.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.sql.Date;
 
 /**
  * @author talbn on 7/15/2020
@@ -19,12 +18,19 @@ import javax.persistence.Table;
 @Table(name = "LOANS")
 public class Loan {
 
+    @Column(name = "loan_Id")
     @Id
-    private Integer bankAccount;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer loanId;
+    @Column(name = "bank_account")
+    private Integer bankAccount;
     private Float amount;
+    @Column(name = "left_To_Pay")
+    private Float leftToPay;
     private Integer duration;
     private Float payment;
     private Float rate;
     private String status;
+    @Column(name = "start_Date")
+    private Date startDate;
 }

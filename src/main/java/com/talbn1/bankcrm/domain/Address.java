@@ -2,6 +2,7 @@ package com.talbn1.bankcrm.domain;
 
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -19,6 +20,7 @@ import javax.persistence.Table;
 @Table(name = "ADDRESS")
 public class Address {
 
+    @Column(name = "address_Id")
     @Id
     private Integer addressId;
     private String city;
