@@ -5,11 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
 
 /**
  * @author talbn on 7/15/2020
@@ -19,6 +15,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@MappedSuperclass
 public class PersonBaseEntity {
 
     public PersonBaseEntity(String firstName, String lastName) {
@@ -28,7 +25,7 @@ public class PersonBaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long person_id;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")

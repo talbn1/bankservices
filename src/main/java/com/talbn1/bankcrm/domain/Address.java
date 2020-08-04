@@ -2,10 +2,7 @@ package com.talbn1.bankcrm.domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author talbn on 7/22/2020
@@ -22,10 +19,16 @@ public class Address {
 
     @Column(name = "address_Id")
     @Id
-    private Integer addressId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long address_id;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id")
+    private Customer customer;
+
     private String city;
     private String street;
-    private String aptNumber;
+    private Integer aptNumber;
     private String telephone;
     private String email;
 }
