@@ -19,11 +19,11 @@ public class Address {
 
     @Column(name = "address_Id")
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long address_id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_id")
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_id_fk")
     private Customer customer;
 
     private String city;

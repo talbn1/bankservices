@@ -18,21 +18,20 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "CUSTOMERS")
 
-public class Customer extends PersonBaseEntity {
+public class Customer{
 
     public Customer() {
     }
 
-/*
-    public Customer(Long id, String firstName, String lastName, Set<Account> accountList,
-                    Address address, CreditGrade creditGrade) {
-        super(id, firstName, lastName);
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long customer_id;
 
-        this.address = address;
-        this.accountList = accountList;
-        this.creditGrade = creditGrade;
-    }
-*/
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private List<Account> accountList = new ArrayList<>();

@@ -20,14 +20,13 @@ public class Loan {
 
     @Column(name = "loan_Id")
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long loanId;
-
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long loan_Id;
 
     @ManyToOne
-    @JoinColumn(name = "Account_id")
+    @JoinColumn(name = "account_Id_fk")
     private Account account;
+
     private Double amount;
     @Column(name = "left_To_Pay")
     private Float leftToPay;

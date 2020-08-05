@@ -23,11 +23,12 @@ import java.util.Set;
 @Table(name = "ACCOUNTS")
 public class Account {
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long accountId;
+    private Long account_Id;
 
     @ManyToOne
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "person_id_fk")
     private Customer customer;
 
     private Double balance;
