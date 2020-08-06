@@ -1,5 +1,6 @@
 package com.talbn1.bankcrm.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class Address {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id_fk")
+    @JsonBackReference
     private Customer customer;
 
     private String city;

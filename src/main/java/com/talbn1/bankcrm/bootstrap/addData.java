@@ -25,7 +25,7 @@ public class addData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         System.out.println("Data loader START");
-        loadData();
+        //loadData();
         System.out.println("Data loader END");
     }
 

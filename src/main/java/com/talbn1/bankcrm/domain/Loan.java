@@ -1,5 +1,6 @@
 package com.talbn1.bankcrm.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class Loan {
 
     @ManyToOne
     @JoinColumn(name = "account_Id_fk")
+    @JsonBackReference
     private Account account;
 
     private Double amount;
@@ -36,4 +38,12 @@ public class Loan {
     private String status;
     @Column(name = "start_Date")
     private Date startDate;
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }
