@@ -1,20 +1,23 @@
 # bankservices
 
-To implement in this project
+Implemented :
 
-dockers
+HIBERNATE
 
-add to cricleCI or jenkins
+--------------------------
+To implement in this project : 
 
-split
+SPLIT :  the project to services and client
 
-JUNIT
+Dockers : Set DB to docker
 
-hibernate
+JENKINS : 
 
-apigateway
+JUNIT : 
 
-aws
+API-GATEWAY
+
+AWS
 
 auto mapper
 
