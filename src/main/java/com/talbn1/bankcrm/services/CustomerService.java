@@ -1,6 +1,7 @@
 package com.talbn1.bankcrm.services;
 
 import com.talbn1.bankcrm.domain.Customer;
+import com.talbn1.bankcrm.dtomodel.CustomerDto;
 
 /**
  * @author talbn on 8/4/2020
@@ -9,7 +10,7 @@ import com.talbn1.bankcrm.domain.Customer;
 
 public interface CustomerService {
 
-    Customer saveNewBeer(Customer customer);
+    CustomerDto saveNewCustomer(CustomerDto customerDto);
 
     Customer getById(Long customerId);
 }
