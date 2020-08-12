@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class CustomerDto {
                        @NotBlank String lastName,
                        @NotBlank Address address,
                        @NotBlank CreditGrade creditGrade,
-                       List<Account> accounts) {
+                       List<AccountDto> accounts) {
 
         this.customerId = customerId;
         this.firstName = firstName;
@@ -33,8 +34,6 @@ public class CustomerDto {
         this.address = address;
         this.creditGrade = creditGrade;
         this.accounts = accounts;
-
-
     }
 
     @Null
@@ -49,10 +48,9 @@ public class CustomerDto {
     @NotBlank
     private Address address;
 
-
-    private List<Account> accounts;
-
     @NotBlank
     private CreditGrade creditGrade;
 
+    @NotNull
+    private List<AccountDto> accounts;
 }

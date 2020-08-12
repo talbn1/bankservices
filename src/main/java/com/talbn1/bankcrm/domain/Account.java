@@ -33,13 +33,9 @@ public class Account {
 
     private Double balance;
 
-
-
     @OneToMany(cascade= CascadeType.ALL, mappedBy = "account")
     @JsonManagedReference
     private List<Loan> loans = new ArrayList<>();
-
-
 
     public Long getAccount_Id() {
         return account_Id;
