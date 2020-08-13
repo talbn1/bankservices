@@ -1,10 +1,7 @@
 package com.talbn1.bankcrm.mappers;
 
 import com.talbn1.bankcrm.domain.Address;
-import com.talbn1.bankcrm.domain.Customer;
 import com.talbn1.bankcrm.dtomodel.AddressDto;
-import com.talbn1.bankcrm.dtomodel.CustomerDto;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,21 +18,23 @@ public class AddressMapper {
             Address.AddressBuilder address = Address.builder();
             address.aptNumber(addressDto.getAptNumber());
             address.city(addressDto.getCity());
+            address.email(addressDto.getEmail());
+            address.street(addressDto.getStreet());
+            address.telephone(addressDto.getTelephone());
             return address.build();
         }
     }
 
-    public CustomerDto addressEntityToDto(Address address) {
+    public AddressDto addressEntityToDto(Address address) {
         if (address == null) {
             return null;
         } else {
-            CustomerDto.CustomerDtoBuilder customerDto = CustomerDto.builder();
-/*            customerDto.customerId(address.getCustomerId());
-            customerDto.firstName(address.getFirstName());
-            customerDto.lastName(address.getLastName());
-            customerDto.creditGrade(address.getCreditGrade());*/
-            return customerDto.build();
+            AddressDto.AddressDtoBuilder addressDto = AddressDto.builder();
+            addressDto.aptNumber(address.getAptNumber());
+            addressDto.city(address.getCity());
+            addressDto.email(address.getEmail());
+            addressDto.telephone(address.getTelephone());
+            return addressDto.build();
         }
     }
-
 }

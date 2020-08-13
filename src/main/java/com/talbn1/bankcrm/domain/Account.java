@@ -1,6 +1,7 @@
 package com.talbn1.bankcrm.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,6 +34,7 @@ public class Account {
 
     private Double balance;
 
+    @JsonIgnoreProperties("customer")
     @OneToMany(cascade= CascadeType.ALL, mappedBy = "account")
     @JsonManagedReference
     private List<Loan> loans = new ArrayList<>();

@@ -22,7 +22,10 @@ import java.util.List;
 @Service
 public class CustomerJpaServiceImpl implements CustomerService {
 
-    public CustomerJpaServiceImpl(CustomerRepository customerRepository, Mappers customerMapper, CustomerConverter customerConverter, AddressMapper addressMapper, AddressMapper address, AddressMapper addressMapper1, AccountMapper accountMapper, LoanMapper loanMapper) {
+    public CustomerJpaServiceImpl(CustomerRepository customerRepository, Mappers customerMapper,
+                                  CustomerConverter customerConverter, AddressMapper addressMapper,
+                                  AddressMapper address, AddressMapper addressMapper1,
+                                  AccountMapper accountMapper, LoanMapper loanMapper) {
         this.customerRepository = customerRepository;
         this.customerMapper = customerMapper;
         this.customerConverter = customerConverter;
@@ -55,12 +58,10 @@ public class CustomerJpaServiceImpl implements CustomerService {
             if (loanDtos != null){
                 account.setLoans(loansInitial);
                 for (LoanDto loanDto: loanDtos) {
-                    Loan loan = loanMapper.LoanDtoToEntity(loanDto);
-                    loan.setAccount(account);
+                    Loan loan = loanMapper.LoanDtoToEntity(loanDto, account );
                     account.getLoans().add(loan);
                 }
             }
-
             account.setCustomer(customer);
             customer.getAccountList().add(account);
         }

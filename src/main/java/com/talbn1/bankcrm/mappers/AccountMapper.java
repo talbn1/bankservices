@@ -13,8 +13,19 @@ import org.springframework.stereotype.Component;
 public class AccountMapper {
 
     public Account AccountDtoToEntitiy(AccountDto accountDto){
+
+
+
+
+
+
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(accountDto, Account.class);
+    }
+
+    public AccountDto EntityToAccountDto(Account account){
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper.map(account, AccountDto.class);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.talbn1.bankcrm.dtomodel;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.talbn1.bankcrm.domain.Account;
 import com.talbn1.bankcrm.domain.Address;
 import com.talbn1.bankcrm.domain.CreditGrade;
@@ -8,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.List;
 
@@ -51,6 +51,8 @@ public class CustomerDto {
     @NotBlank
     private CreditGrade creditGrade;
 
-    @NotNull
+    //@JsonBackReference
     private List<AccountDto> accounts;
+
+
 }

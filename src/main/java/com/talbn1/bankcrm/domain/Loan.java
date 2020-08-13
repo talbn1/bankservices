@@ -30,12 +30,18 @@ public class Loan {
     private Account account;
 
     private Double amount;
+
     @Column(name = "left_To_Pay")
     private Float leftToPay;
+
     private Integer duration;
+
     private Float payment;
+
     private Float rate;
+
     private String status;
+
     @Column(name = "start_Date")
     private Date startDate;
 
