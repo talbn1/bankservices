@@ -24,22 +24,19 @@ public class CustomerDetailsController {
     private final CustomerRepository customerRepository;
     private final CustomerService customerService;
 
-/*
+
     @GetMapping("customer/{customerId}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable("customerId") Long customerId){
+    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable("customerId") Long customerId) {
         return new ResponseEntity<>(customerService.getById(customerId), HttpStatus.OK);
     }
 
-    @PostMapping(path = "customer/save")
-    public ResponseEntity saveNewCustomer(@RequestBody @Validated Customer customer) {
-        return new ResponseEntity<>(customerService.saveNewCustomer(customer), HttpStatus.CREATED);
-    }
-*/
 
     @PostMapping(path = "customer/save")
     public ResponseEntity saveNewCustomer(@RequestBody @Validated CustomerDto customerDto) {
         return new ResponseEntity<>(customerService.saveNewCustomer(customerDto), HttpStatus.CREATED);
     }
+
+
 
 
 }

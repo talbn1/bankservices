@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author talbn on 8/4/2020
@@ -71,9 +72,15 @@ public class CustomerJpaServiceImpl implements CustomerService {
         return customerConverter.customerEntityToDto(customerRepository.save(customer));
     }
 
-    @Override
+/*    @Override
     public Customer getById(Long customer_id){
-        return customerRepository.findById(customer_id).orElse(null);
-    }
 
+        return customerRepository.findById(customer_id).orElse(null);
+    }*/
+
+    @Override
+    public CustomerDto getById(Long customerId){
+        return customerConverter.customerEntityToDto(Objects.requireNonNull
+                (customerRepository.findById(customerId).orElse(null)));
+    }
 }
