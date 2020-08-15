@@ -29,11 +29,11 @@ class CustomerDetailsControllerTest {
     void setUp() {
     }
 
-    @Test
+/*    @Test
     void getCustomerById() throws Exception {
         given(customerService.getById(any())).willReturn(getValidCustomerDto());
         mockMvc.perform(get("/api/customer/1")).andExpect(status().isOk());
-    }
+    }*/
 
     @Test
     void saveNewCustomer() {
