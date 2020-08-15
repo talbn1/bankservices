@@ -8,16 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.math.BigDecimal;
-
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @WebMvcTest(CustomerDetailsController.class)
@@ -29,6 +23,8 @@ class CustomerDetailsControllerTest {
     @MockBean
     CustomerService customerService;
 
+
+
     @BeforeEach
     void setUp() {
     }
@@ -39,7 +35,21 @@ class CustomerDetailsControllerTest {
         mockMvc.perform(get("/api/customer/1")).andExpect(status().isOk());
     }
 
+    @Test
+    void saveNewCustomer() {
+    }
 
+    @Test
+    void getAll() {
+    }
+
+    @Test
+    void saveAll() {
+    }
+
+    @Test
+    void updateCustomer() {
+    }
 
     CustomerDto getValidCustomerDto(){
         return CustomerDto.builder()
@@ -47,5 +57,4 @@ class CustomerDetailsControllerTest {
                 .lastName("testLastName")
                 .build();
     }
-
 }
