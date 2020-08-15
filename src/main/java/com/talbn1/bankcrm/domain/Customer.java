@@ -19,6 +19,7 @@ import java.util.List;
 @Builder
 @Entity
 @AllArgsConstructor
+@ToString
 @Table(name = "CUSTOMERS")
 
 public class Customer{

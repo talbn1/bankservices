@@ -22,22 +22,6 @@ public class CustomerConverter {
         this.accountMapper = accountMapper;
     }
 
-
-    public Customer customerDtoToEntitiy(CustomerDto customerDto) {
-
-/*        ModelMapper modelMapper = new ModelMapper();
-        return  modelMapper.map(customerDto,Customer.class);*/
-
-        if (customerDto == null) {
-            return null;
-        }
-
-        Customer.CustomerBuilder customer = Customer.builder();
-        //customer.address()
-
-        return null;
-    }
-
     public CustomerDto customerEntityToDto(Customer customer) {
 
         CustomerDto.CustomerDtoBuilder customerDto = CustomerDto.builder();

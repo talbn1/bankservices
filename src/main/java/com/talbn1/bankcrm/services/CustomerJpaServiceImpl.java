@@ -24,8 +24,7 @@ import java.util.Objects;
 public class CustomerJpaServiceImpl implements CustomerService {
 
     public CustomerJpaServiceImpl(CustomerRepository customerRepository, Mappers customerMapper,
-                                  CustomerConverter customerConverter, AddressMapper addressMapper,
-                                  AddressMapper address, AddressMapper addressMapper1,
+                                  CustomerConverter customerConverter,
                                   AccountMapper accountMapper, LoanMapper loanMapper) {
         this.customerRepository = customerRepository;
         this.customerMapper = customerMapper;
@@ -42,6 +41,57 @@ public class CustomerJpaServiceImpl implements CustomerService {
 
     @Override
     public CustomerDto saveNewCustomer(CustomerDto customerDto) {
+        return customerConverter.customerEntityToDto(customerRepository.save(mapCustomer(customerDto)));
+    }
+
+
+    @Override
+    public CustomerDto getById(Long customerId){
+        return customerConverter.customerEntityToDto(Objects.requireNonNull
+                (customerRepository.findById(customerId).orElse(null)));
+    }
+
+    @Override
+    public List<CustomerDto> getAll() {
+
+        List<Customer> customerList = customerRepository.findAll();
+        List<CustomerDto> dtoList = new ArrayList<>();
+        for (Customer customer: customerList) {
+            dtoList.add(customerConverter.customerEntityToDto(customer));
+        }
+        return dtoList;
+
+    }
+
+    @Override
+    public List<CustomerDto> SaveAll(List<CustomerDto> customerDtos) {
+
+        List<Customer> customers = new ArrayList<>();
+
+        for (CustomerDto customerDto: customerDtos) {
+            customers.add(mapCustomer(customerDto));
+        }
+        List<Customer> savedCustomers =  customerRepository.saveAll(customers);
+        List<CustomerDto> dtos = new ArrayList<>();
+        for (Customer customer: savedCustomers) {
+            dtos.add(customerConverter.customerEntityToDto(customer));
+        }
+        return dtos;
+    }
+
+    @Override
+    public CustomerDto updateCustomer(CustomerDto customerDto, Long customerId) {
+
+        try {
+            Customer customer = customerRepository.findById(customerId).orElse(null);
+            customer.setFirstName(customerDto.getFirstName());
+            return  customerConverter.customerEntityToDto(customer);
+        }catch (NullPointerException  e){
+            return null;
+        }
+    }
+
+    public Customer mapCustomer(CustomerDto customerDto){
 
         Customer customer = customerMapper.customerDtoToCustomer(customerDto);
 
@@ -69,18 +119,7 @@ public class CustomerJpaServiceImpl implements CustomerService {
 
         address.setCustomer(customer);
         customer.setAddress(address);
-        return customerConverter.customerEntityToDto(customerRepository.save(customer));
-    }
 
-/*    @Override
-    public Customer getById(Long customer_id){
-
-        return customerRepository.findById(customer_id).orElse(null);
-    }*/
-
-    @Override
-    public CustomerDto getById(Long customerId){
-        return customerConverter.customerEntityToDto(Objects.requireNonNull
-                (customerRepository.findById(customerId).orElse(null)));
+        return customer;
     }
 }
